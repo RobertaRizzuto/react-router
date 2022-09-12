@@ -17,32 +17,31 @@ const Header = ({ children }) => {
           <img className={styles.img} src={logo} alt="logo" />
         </section>
         <section className={styles.side}>
-          {children}
-          <div className={styles.menu}>
+          
+            {isDropdownVisible && (
+              <div className={styles.dropdown}>
+                <ul>
+                  <li>
+                    <Link to="/">HOME</Link>
+                  </li>
+                  <li>
+                    <Link to="gallery">GALLERY</Link>
+                  </li>
+                  <li>
+                    <Link to="surprise">SURPRISE</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
             <img
               onClick={onHadleClick}
               className={styles.img}
               src={menu}
               alt="menu"
             />
-          </div>
+          
         </section>
       </nav>
-      {isDropdownVisible && (
-        <div className={styles.dropdown}>
-          <ul>
-            <li>
-            <Link to="/">HOME</Link>
-            </li>
-            <li>
-            <Link to="gallery">GALLERY</Link>
-            </li>
-            <li>
-            <Link to="surprise">SURPRISE</Link>
-            </li>
-          </ul>
-        </div>
-      )}
     </header>
   );
 };

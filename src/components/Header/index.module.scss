@@ -23,41 +23,34 @@
     }
     .side {
       @include flex-element(row, flex-end, center, nowrap, 0px, 60%);
-      .menu {
-        @include flex-element(row, flex-end, center);
-      }
-    }
-  }
-  .dropdown {
-    z-index: 3;
-    backdrop-filter: blur(10px);
-    width: fit-content;
-    position: fixed;
-    right: 0;
-    top: 59px;
-    ul {
-      @include flex-element(
-        column,
-        flex-end,
-        flex-end,
-        $wrap: nowrap,
-        $gap: 10px,
-        $width: auto,
-        $height: auto
-      );
+      .dropdown {
+       
+        
+        ul {
+          @include flex-element(
+            row,
+            flex-end,
+            flex-end,
+            $wrap: nowrap,
+            $gap: 10px,
+            $width: auto,
+            $height: auto
+          );
 
-      list-style-type: none;
+          list-style-type: none;
 
-      a {
-        text-decoration: none;
-        padding: 8px;
-        border-radius: 6px;
-        color: $light-pink;
-      }
-      a:hover {
-        color: $detail-pink;
+          a {
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 6px;
+            color: white;
+          }
+          a:hover {
+            color: $detail-pink;
 
-        font-weight: bold;
+            font-weight: bold;
+          }
+        }
       }
     }
   }
