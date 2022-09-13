@@ -27,9 +27,7 @@ const Header = ({ children }) => {
                   <li>
                     <Link to="gallery">GALLERY</Link>
                   </li>
-                  <li>
-                    <Link to="surprise">SURPRISE</Link>
-                  </li>
+                
                 </ul>
               </div>
             )}

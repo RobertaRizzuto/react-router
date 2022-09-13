@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Gallery from "./pages/Gallery";
-import Surprise from "./pages/Surprise";
+import Category from "./pages/Category";
 import ErrorPage from "./pages/ErrorPage";
 import Header from "./components/Header";
 
@@ -14,15 +14,11 @@ root.render(
     <BrowserRouter>
       <Header />
       <Routes>
-        {/* <Route path="/catalogo/:categoryName" element={<Category />} />
-        <Route
-          path="/catalogo/:categoryName/new"
-          element={<ErrorPage/>}
-        /> */}
+        {/* <Route path="/:categoryName" element={<Category />}  */}
         
         <Route path="/" element={<App />} />
         <Route path="gallery" element={<Gallery />} />
-        <Route path="surprise" element={<Surprise />} />
+        <Route path="/:categoryName" element={<Category />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

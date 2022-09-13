@@ -1,7 +1,7 @@
 @import "../../styles/_mixins";
 @import "../../styles/_variables";
 
-.CategoryListItem {
+.MealListItem {
   @include flex-element(row, space-between, center, nowrap, 30px, 400px, 200px);
   position: relative;
   background: linear-gradient(

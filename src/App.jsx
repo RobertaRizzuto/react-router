@@ -7,14 +7,14 @@ import CategoryList from './components/CategoryList';
 
 function App() {
   const { data, loading, error } = useFetch(ENDPOINTS.CATEGORIES);
-  console.log(ENDPOINTS.CATEGORIES);
+  
 
   if (loading) {
     return 'Loading...';
   }
 
   return (
-    <div>
+    <div className={styles.App}>
       <h1>Home</h1>
       {data ? (
         <CategoryList categories={data.categories} />
