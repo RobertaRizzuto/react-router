@@ -1,0 +1,40 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.CategoryListItem{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    gap: 1rem;
+    padding: 0.5rem;
+  
+    &:hover {
+      background: #eee;
+    }
+  
+    .img {
+      aspect-ratio: 1/1;
+      width: 100%;
+      object-fit: contain;
+      object-position: center;
+  
+      
+    }
+ 
+  
+    .title {
+      line-height: 1;
+      margin: 0 0 0.5rem;
+    }
+  
+  
+    .link {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      opacity: 0;
+    }
+  }

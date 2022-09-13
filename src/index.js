@@ -12,9 +12,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <Header/>
+      <Header />
       <Routes>
-      
+        {/* <Route path="/catalogo/:categoryName" element={<Category />} />
+        <Route
+          path="/catalogo/:categoryName/new"
+          element={<ErrorPage/>}
+        /> */}
+        
         <Route path="/" element={<App />} />
         <Route path="gallery" element={<Gallery />} />
         <Route path="surprise" element={<Surprise />} />
