@@ -7,5 +7,8 @@ const ENDPOINTS = {
   get FILTER() {
     return `${this.BASEURL}/filter.php?c=`;
   },
+  get DETAIL() {
+    return `${this.BASEURL}/lookup.php`;
+  }
 };
 export default ENDPOINTS;

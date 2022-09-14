@@ -16,7 +16,7 @@ const Category = () => {
   return (
     <div className={styles.Category}>
       
-      <MealList meals={data?.meals} />
+      <MealList meals={data?.meals} categoryName={categoryName}/>
     </div>
   );
 };

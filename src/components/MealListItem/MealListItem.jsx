@@ -4,7 +4,6 @@ import styles from './index.module.scss';
 
 const MealListItem = (props) => {
   const {meal = {}, categoryName = ''} = props;
-
   return (
       <li className={styles.MealListItem}>
         
@@ -17,7 +16,7 @@ const MealListItem = (props) => {
         
           <h3 className={styles.title}>{meal.strMeal}</h3>
       
-        <Link to={`/${categoryName}/${meal.strMeal}`}
+        <Link to={`/${categoryName}/${meal.strMeal}/${meal.idMeal}`}
               title={`naviga sul catalogo ${meal.strMeal}`}
               className={styles.link}
         >
