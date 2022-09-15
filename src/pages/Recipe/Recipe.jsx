@@ -1,21 +1,28 @@
 import styles from "./index.module.scss";
-import useFetch from "../../utils/api/use-fetch";
-import ENDPOINTS from "../../utils/api/endpoints";
+// import useFetch from "../../utils/api/use-fetch";
+// import ENDPOINTS from "../../utils/api/endpoints";
 import { Outlet, useParams, Link, NavLink } from "react-router-dom";
 
+import { useLoaderData } from "react-router-dom";
+
+
+ 
+
 const Recipe = () => {
-  const { categoryName, recipeName, id } = useParams();
+  const { categoryName, recipeName, 
+    // id 
+  } = useParams();
   const tabs = [
     { label: "Instructions", path: "./instructions" },
     { label: "Ingredients", path: "./ingredients" },
     { label: "YouTube", path: "./youtube" },
   ];
-
-  const { data, loading, error } = useFetch(`${ENDPOINTS.DETAIL}?i=${id}`);
+ const data = useLoaderData();
+  // const { data, loading, error } = useFetch(`${ENDPOINTS.DETAIL}?i=${id}`);
   const recipe = data?.meals?.at(0) ?? {};
-  if (!data) {
-    return "loading...";
-  }
+  // if (!data) {
+  //   return "loading...";
+  // }
   return (
     <div className={styles.Recipe}>
       <div className={styles.top}>

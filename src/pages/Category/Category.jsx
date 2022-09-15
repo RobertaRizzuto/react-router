@@ -4,19 +4,21 @@ import useFetch from "../../utils/api/use-fetch";
 import ENDPOINTS from "../../utils/api/endpoints";
 import { useParams } from "react-router-dom";
 
+import { useLoaderData } from "react-router-dom";
+
 const Category = () => {
+  const data = useLoaderData();
   const { categoryName } = useParams();
-  const { data, loading, error } = useFetch(
-    `${ENDPOINTS.FILTER}${categoryName}`
-  );
-  if (loading) {
-    return "Loading...";
-  }
+  // const { data, loading, error } = useFetch(
+  //   `${ENDPOINTS.FILTER}${categoryName}`
+  // );
+  // if (loading) {
+  //   return "Loading...";
+  // }
 
   return (
     <div className={styles.Category}>
-      
-      <MealList meals={data?.meals} categoryName={categoryName}/>
+      <MealList meals={data?.meals} categoryName={categoryName} />
     </div>
   );
 };

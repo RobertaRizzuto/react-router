@@ -24,10 +24,6 @@ const Header = ({ children }) => {
                   <li>
                     <Link to="/">HOME</Link>
                   </li>
-                  <li>
-                    <Link to="gallery">GALLERY</Link>
-                  </li>
-                
                 </ul>
               </div>
             )}

@@ -1,9 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React, { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  Navigate,
+} from "react-router-dom";
+
 import "./index.css";
+import ENDPOINTS from "./utils/api/endpoints.js";
 import App from "./App";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Gallery from "./pages/Gallery";
+import Gallery from "./pages/Catalog";
 import Category from "./pages/Category";
 import ErrorPage from "./pages/ErrorPage";
 import Header from "./components/Header";
@@ -11,24 +17,52 @@ import Recipe from "./pages/Recipe";
 import RecipeYoutubePlayer from "./components/RecipeYoutubePlayer";
 import RecipeInstructions from "./components/RecipeInstructions";
 import RecipeIngredients from "./components/RecipeIngredients";
+import Catalog from "./pages/Catalog";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        { path: "/",
+        element: <Catalog />,
+        loader: async () => {
+          return fetch(ENDPOINTS.CATEGORIES);
+        },},
+        {
+          path: "/:categoryName",
+          element: <Category />,
+          loader: ({ params }) => {
+            return fetch(`${ENDPOINTS.FILTER}${params?.categoryName}`);
+          },
+        },
+        {
+          path: "/:categoryName/:recipeName/:id",
+          element: <Recipe />,
+          loader: ({ params }) => {
+            return fetch(`${ENDPOINTS.DETAIL}?i=${params?.id}`);
+          },
+          children: [
+            { path: "", element: <Navigate to={"instructions"} /> },
+            { path: "ingredients", element: <RecipeIngredients /> },
+            { path: "instructions", element: <RecipeInstructions /> },
+            { path: "youtube", element: <RecipeYoutubePlayer /> },
+          ],
+        },
+      ],
+    },
+  ],
+
+  { path: "*", element: <ErrorPage /> }
+);
+
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="gallery" element={<Gallery />} />
-        <Route path=":categoryName" element={<Category />} />
-        <Route path="/:categoryName/:recipeName/:id" element={<Recipe />}>
-          <Route path="" element={<Navigate to="instructions" />} />
-          <Route path="instructions" element={<RecipeInstructions />} />
-          <Route path="ingredients" element={<RecipeIngredients />} />
-          <Route path="youtube" element={<RecipeYoutubePlayer />} />
-        </Route>
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+  <StrictMode>
+    
+    <RouterProvider router={router} />
+  </StrictMode>
 );
