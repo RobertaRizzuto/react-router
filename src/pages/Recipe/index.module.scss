@@ -1,0 +1,36 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.Recipe {
+  @include flex-element(column, flex-start, flex-start, nowrap, 20px);
+  padding: 20px;
+
+  .top {
+    @include flex-element(row, flex-start, center, nowrap, 20px, 100%, 300px);
+   
+    .img {
+      aspect-ratio: 1/1;
+      height: 300px;
+      object-fit: cover;
+      width: 300px;
+    }
+  }
+  .bottom {
+   
+    
+    .tabs {
+      @include flex-element(row, flex-start, center, nowrap, 20px);
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      .tabName {
+       
+
+        .link {
+          color: black;
+        }
+      }
+    }
+  }
+}
