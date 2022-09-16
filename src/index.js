@@ -9,10 +9,9 @@ import {
 import "./index.css";
 import ENDPOINTS from "./utils/api/endpoints.js";
 import App from "./App";
-import Gallery from "./pages/Catalog";
 import Category from "./pages/Category";
 import ErrorPage from "./pages/ErrorPage";
-import Header from "./components/Header";
+
 import Recipe from "./pages/Recipe";
 import RecipeYoutubePlayer from "./components/RecipeYoutubePlayer";
 import RecipeInstructions from "./components/RecipeInstructions";
@@ -28,11 +27,13 @@ const router = createBrowserRouter(
       path: "/",
       element: <App />,
       children: [
-        { path: "/",
-        element: <Catalog />,
-        loader: async () => {
-          return fetch(ENDPOINTS.CATEGORIES);
-        },},
+        {
+          path: "/",
+          element: <Catalog />,
+          loader: async () => {
+            return fetch(ENDPOINTS.CATEGORIES);
+          },
+        },
         {
           path: "/:categoryName",
           element: <Category />,
@@ -62,7 +63,6 @@ const router = createBrowserRouter(
 
 root.render(
   <StrictMode>
-    
     <RouterProvider router={router} />
   </StrictMode>
 );
