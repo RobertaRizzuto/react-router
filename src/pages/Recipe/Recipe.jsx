@@ -6,6 +6,7 @@ import { Outlet, useParams, Link, NavLink } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 
 
+
  
 
 const Recipe = () => {
@@ -19,15 +20,15 @@ const Recipe = () => {
   ];
  const data = useLoaderData();
   // const { data, loading, error } = useFetch(`${ENDPOINTS.DETAIL}?i=${id}`);
-  const recipe = data?.meals?.at(0) ?? {};
+  const recipe = data.meals.at(0);
   // if (!data) {
   //   return "loading...";
   // }
   return (
-    <div className={styles.Recipe}>
+   
+     <div className={styles.Recipe}>
       <div className={styles.top}>
         <img
-          width={100}
           src={recipe.strMealThumb}
           alt={recipeName}
           className={styles.img}
@@ -55,7 +56,11 @@ const Recipe = () => {
         <Outlet context={recipe} className={styles.outlet} />
       </div>
     </div>
+   
   );
 };
 
 export default Recipe;
+
+
+

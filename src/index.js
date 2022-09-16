@@ -1,4 +1,4 @@
-import React, { StrictMode } from "react";
+import React, { lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import {
   RouterProvider,
@@ -12,7 +12,7 @@ import App from "./App";
 import Category from "./pages/Category";
 import ErrorPage from "./pages/ErrorPage";
 
-import Recipe from "./pages/Recipe";
+
 import RecipeYoutubePlayer from "./components/RecipeYoutubePlayer";
 import RecipeInstructions from "./components/RecipeInstructions";
 import RecipeIngredients from "./components/RecipeIngredients";
@@ -20,7 +20,7 @@ import Catalog from "./pages/Catalog";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
-
+const LazyRecipe = lazy(()=> import( "./pages/Recipe" ))
 const router = createBrowserRouter(
   [
     {
@@ -43,7 +43,7 @@ const router = createBrowserRouter(
         },
         {
           path: "/:categoryName/:recipeName/:id",
-          element: <Recipe />,
+          element:(<Suspense fallback="loading..."> <LazyRecipe/></Suspense>),
           loader: ({ params }) => {
             return fetch(`${ENDPOINTS.DETAIL}?i=${params?.id}`);
           },
